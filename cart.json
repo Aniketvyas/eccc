@@ -1,0 +1,26 @@
+{
+    "product": [
+        {
+            "details":productData,
+            "slug": "marble-khalbatta",
+            "quantity" : "10"
+        },
+        {
+            "slug":"marlbe-saman",
+            "quantity":"10"
+        }
+    ],
+    "tax": "100",
+    "voucher" : ["PREDISCOUNT"],
+    "data_count" : "2"
+
+}
+
+
+
+
+1. quantity
+2. product slug
+3. tax
+4. voucher discount
+5. cart_data_count

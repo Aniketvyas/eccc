@@ -1,0 +1,35 @@
+.header-top-light .nav-link {
+    font-weight: normal;
+  }
+  .header-top-light .nav-link:hover {
+    color: #212529;
+  }
+  .header-top-dark {
+    color: rgba(255, 255, 255, 0.75);
+  }
+  .header-top-dark .nav-link {
+    color: inherit;
+    font-weight: normal;
+  }
+  .header-top-dark .nav-link:hover {
+    color: #fff;
+  }
+  .header-main {
+    position: relative;
+    /* padding-top: 1rem;
+    padding-bottom: 1rem; */
+  }
+  .brand-wrap,
+  .navbar-brand {
+    opacity: 0.75;
+  }
+  .brand-wrap .logo,
+  .navbar-brand .logo {
+    margin-right: 7px;
+    max-height: 42px;
+    display: inline-block;
+  }
+  .brand-wrap:hover,
+  .navbar-brand:hover {
+    opacity: 1;
+  }

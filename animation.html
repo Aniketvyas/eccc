@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Interiors Animation</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  perspective: 800px;
+  background: #ecf0f1;
+}
+
+.scene {
+  width: 400px;
+  height: 400px;
+  transform-style: preserve-3d;
+  transform: rotateX(30deg) rotateY(45deg);
+}
+
+.luxury-interior {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  transform-style: preserve-3d;
+  animation: rotateInterior 10s linear infinite;
+}
+
+.floor {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #ecf0f1, #bdc3c7);
+  transform: rotateX(90deg);
+}
+
+.walls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.wall {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #ecf0f1;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.wall:nth-child(1) {
+  transform: rotateY(0deg) translateZ(150px);
+}
+
+.wall:nth-child(2) {
+  transform: rotateY(90deg) translateZ(150px);
+}
+
+.wall:nth-child(3) {
+  transform: rotateY(180deg) translateZ(150px);
+}
+
+.wall:nth-child(4) {
+  transform: rotateY(-90deg) translateZ(150px);
+}
+
+.marble-columns {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+}
+
+.marble-column {
+  position: absolute;
+  width: 20px;
+  height: 200px;
+  background: linear-gradient(to bottom, #bdc3c7, #95a5a6, #bdc3c7);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transform: translate(-50%, -50%);
+}
+
+.marble-column:nth-child(1) {
+  transform: translateX(50px) translateZ(70px);
+}
+
+.marble-column:nth-child(2) {
+  transform: translateX(-50px) translateZ(70px);
+}
+
+.marble-column:nth-child(3) {
+  transform: translateZ(-70px);
+}
+
+.marble-column:nth-child(4) {
+  transform: translateX(70px);
+}
+
+@keyframes rotateInterior {
+  0% {
+    transform: rotateX(30deg) rotateY(45deg);
+  }
+  100% {
+    transform: rotateX(30deg) rotateY(405deg);
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <div class="luxury-interior">
+      <div class="floor"></div>
+      <div class="walls">
+        <div class="wall"></div>
+        <div class="wall"></div>
+        <div class="wall"></div>
+        <div class="wall"></div>
+      </div>
+      <div class="marble-columns">
+        <div class="marble-column"></div>
+        <div class="marble-column"></div>
+        <div class="marble-column"></div>
+        <div class="marble-column"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

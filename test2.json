@@ -1,0 +1,38 @@
+[
+    {
+      "timestamp": "2024-03-14T08:55:02",
+      "source": "testbed206@gmail.com",
+      "recipients": ["naveen.kadha@omnenest.com", "viren.mallya@omnenest.com"],
+      "subject": "!! ALERT !![APP_TR2-172.30.101.1][CHANDIVALI][Hyderabad]---DownloadExchangeFiles_ncdex-ALL-FAILURE",
+      "body": "DownloadExchangeFiles_ncdex: V.7.4.4.0_beta2 [Sub.v-1.0.0.6 ]\nDownloading files initiate with User Defined tries [ No : 3 ]\nNOT ABLE TO DOWNLOAD REQUIRED FILE DUE TO CONNECTIVITY PROBLEM/FILE NOT AVAIL IN EXCHANGE SIDE.\n",
+      "attachments": [],
+      "metadata": {
+        "importance": "high",
+        "confidential": true
+      }
+    },
+    {
+        "timestamp": "2024-03-14T08:55:02",
+        "source": "testbed206@gmail.com",
+        "recipients": ["naveen.kadha@omnenest.com", "viren.mallya@omnenest.com"],
+        "subject": "!! ALERT !![APP_TR2-172.30.101.1][CHANDIVALI][Hyderabad]---DownloadExchangeFiles_ncdex-ALL-FAILURE",
+        "body": "DownloadExchangeFiles_ncdex: V.7.4.4.0_beta2 [Sub.v-1.0.0.6 ]\nDownloading files initiate with User Defined tries [ No : 3 ]\nNOT ABLE TO DOWNLOAD REQUIRED FILE DUE TO CONNECTIVITY PROBLEM/FILE NOT AVAIL IN EXCHANGE SIDE.\n",
+        "attachments": [],
+        "metadata": {
+          "importance": "high",
+          "confidential": true
+        }
+      },
+      {
+        "timestamp": "2024-03-14T08:55:02",
+        "source": "testbed206@gmail.com",
+        "recipients": ["naveen.kadha@omnenest.com", "viren.mallya@omnenest.com"],
+        "subject": "!! ALERT !![APP_TR2-172.30.101.1][CHANDIVALI][Hyderabad]---DownloadExchangeFiles_ncdex-ALL-FAILURE",
+        "body": "DownloadExchangeFiles_ncdex: V.7.4.4.0_beta2 [Sub.v-1.0.0.6 ]\nDownloading files initiate with User Defined tries [ No : 3 ]\nNOT ABLE TO DOWNLOAD REQUIRED FILE DUE TO CONNECTIVITY PROBLEM/FILE NOT AVAIL IN EXCHANGE SIDE.\n",
+        "attachments": [],
+        "metadata": {
+          "importance": "high",
+          "confidential": true
+        }
+      }
+  ]
