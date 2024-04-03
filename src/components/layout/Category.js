@@ -13,6 +13,7 @@ const Category = () => {
 
     const [category, setCategory] = useState([]);
     const [refresh, setRefresh]  = useState(false);
+    const [loading, setLoading] = useState(false);
     const {slug} = useParams();
 
     useEffect(() => {
@@ -25,13 +26,19 @@ const Category = () => {
 
     const getCategories = async() => {
         console.log(slug)
+        setLoading(true);
         await Axios.get(`${API}/shop/get_category/${slug}`).then(res=>{
             console.log(res.data);
             setCategory(res.data);
-    }).catch( err => console.log(err))
+            setLoading(false);
+    }).catch( err => {console.log(err); setLoading(false)})
     }
     
-
+    if(loading){
+        document.getElementById('loader').classList.remove('hidden');
+    }
+    else{
+        document.getElementById('loader').classList.add('hidden');
     return(
         <>
         <Navbar />
@@ -67,6 +74,7 @@ const Category = () => {
         </>
        
     )
+        }
 }
 
 

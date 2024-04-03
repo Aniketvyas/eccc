@@ -18,6 +18,7 @@ const Cart = () => {
   const [tax,setTax] = useState(JSON.parse(localStorage.getItem('cart')).tax);
   const [total,setTotal] = useState();
   const [refresh,setRefresh]=useState(true);
+  const [loading, setLoading] = useState(false);
 
 
 
@@ -50,6 +51,7 @@ const get_cartData = () => {
 }
 
 const get_dataFromBackend = (data) => {
+  setLoading(true);
   Axios.post(`${API}/shop/give_cart_data`,data).then(response=>{
     var rspnse = response.data;
     setCartData(rspnse.data);
@@ -58,9 +60,11 @@ const get_dataFromBackend = (data) => {
     var ori = parseInt(get_original_price(rspnse.data));
     var dis = parseInt(get_discounted_price(rspnse.data));
     update_total(ori,dis,rspnse.TAX);
+    setLoading(false);
 
     }).catch(error=>{
         console.log(error);
+        setLoading(false)
     })
 }
 
@@ -195,7 +199,12 @@ const re_fresh = () => {
 
 
 
-  // console.log(cart);
+  if(loading){
+    document.getElementById('loader').classList.remove("hidden")
+    return;
+}
+else{
+    document.getElementById('loader').classList.add("hidden")
 
   return (
     <>
@@ -432,6 +441,7 @@ const re_fresh = () => {
       <Footer />
     </>
   );
+                }
 };
 
 export default Cart;

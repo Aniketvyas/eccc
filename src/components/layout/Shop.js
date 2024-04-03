@@ -13,6 +13,7 @@ const Contact = () => {
 
     const [product_data_shop,setProduct_data_shop]=useState([]);
     const [refresh,setRefresh]=useState(true);
+    const [loading, setLoading] = useState(false);
     useEffect(()=>{
         (async()=>{
             try{
@@ -26,19 +27,28 @@ const Contact = () => {
     },[refresh])
 
     const get_products=()=>{
-		  
+		  setLoading(true);
         Axios.get(`${API}/shop/get_products`).then(response=>{
           console.log("pehla",product_data_shop,response.data);
               setProduct_data_shop(response.data)
               console.log(product_data_shop);
+              setLoading(false);
           }).catch(error=>{
               console.log(error);
+              setLoading(false);
           })
     }
     const re_fresh = () => {
         setRefresh(!refresh);
     }
 
+
+    if(loading){
+      document.getElementById("loader").classList.remove("hidden");
+    }
+    else{
+      document.getElementById("loader").classList.add("hidden");
+    
     return(
         <>
         <Navbar />
@@ -158,6 +168,7 @@ const Contact = () => {
 
 
     )
+}
 }
 
 export default Contact;

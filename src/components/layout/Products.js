@@ -14,6 +14,7 @@ const Products = () => {
     const { slug } = useParams();
     const [product,setProduct]=useState({});
     const [images, setImages] = useState([]);
+    const [loading, setLoading] = useState(false);
     const imageRef=useRef();
     // const [refresh,setRefresh]=useState(true);
 
@@ -24,23 +25,29 @@ const Products = () => {
     },[])
     
     const get_product= async()=>{
+      setLoading(true);
 		console.log("inside",slug,`${API}/shop/product/${slug}`)
        await Axios.get(`${API}/shop/product/${slug}`).then(response=>{
         //   console.log("product",product,response.data);
               setProduct(response.data)
               console.log("product",response.data, product);
+              setLoading(false);
           }).catch(error=>{
               console.log(error);
+              setLoading(false);
           })
     }
 
     const get_product_images= async()=>{
       console.log("inside",slug,`${API}/shop/product_images/${slug}`)
+      setLoading(true);
          await Axios.get(`${API}/shop/product_images/${slug}`).then(response=>{
           //   console.log("product",product,response.data);
                 setImages(response.data)
+                setLoading(false)
             }).catch(error=>{
                 console.log(error);
+                setLoading(false);
             })
       }
 
@@ -51,6 +58,14 @@ const Products = () => {
       var a = document.getElementById("asdf");
       a.src =  `http://${API}/${imageD}`;
     }
+
+
+    if(loading){
+      document.getElementById('loader').classList.remove("hidden");
+    }
+    else{
+      document.getElementById('loader').classList.add("hidden");
+    
 
 return (
 
@@ -228,6 +243,7 @@ return (
      <Footer />
     </>
     )
+}
 }
 
 export default Products;

@@ -13,6 +13,7 @@ const Categories = () => {
 
     const [category, setCategory] = useState([]);
     const [refresh, setRefresh]  = useState(false);
+    const [loading, setLoading] = useState(false);
     const {slug} = useParams();
 
     useEffect(() => {
@@ -21,15 +22,24 @@ const Categories = () => {
 	
 
 	const getCategories = () => {
+        setLoading(true);
 		Axios.get(`${API}/shop/get_categories`).then(response=>{
 			var rspnse = response.data;
 			console.log(rspnse.data);
 			setCategory(rspnse);
+            setLoading(false);
 			}).catch(error=>{
 				console.log(error);
+                setLoading(false);
 			})
 	}
 
+    if(loading){
+        document.getElementById("loader").classList.remove("hidden")
+    }
+    else{
+        document.getElementById("loader").classList.add("hidden");
+    
     return(
         <>
         <Navbar />
@@ -64,6 +74,7 @@ const Categories = () => {
         </>
        
     )
+}
 }
 
 

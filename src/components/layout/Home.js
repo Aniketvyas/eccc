@@ -66,16 +66,19 @@ const Home = () => {
     const [highlighted_product, setHighlighted_product] = useState([]);
     const [refresh, setRefresh] = useState(true);
     const [sliderData, setSliderData] = useState([]);
+    const [loading, setLoading] = useState(false);
     
     useEffect(() => {
         (async () => {
             try {
-
-                get_blogs();
-                get_products();
+                // setLoading(true);
+                get_data();
+                // get_blogs();
+                // get_products();
                 get_highlights();
-                get_highlighted_products();
+                // get_highlighted_products();
                 fetchSliderData();
+                // 
             
             } catch (error) {
                 console.log("useEffect Error")
@@ -84,47 +87,76 @@ const Home = () => {
         })();
     }, [refresh])
 
+    const get_data= () => {
+        setLoading(true);
+        Axios.get(`${API}/shop/home`).then(response => {
+            console.log("data",response.data.products)
+            setProduct_data(response.data.products)
+            setBlog_data(response.data.blogs)
+            setHighlights_data(response.data.highlights)
+            setHighlights_data(response.data.highlights)
+            setSliderData(response.data.highlights)
+            setHighlighted_product(response.data.highlights)
+            setLoading(false);
+        }).catch(err => {
+            console.log(err,"ert")
+            setLoading(false);
+        })
+    }
+
 
     const get_highlighted_products = () => {
+        setLoading(true);
         Axios.get(`${API}/shop/get_highlighted_products`).then(response => {
             var rspnse = response.data;
             setHighlighted_product(rspnse);
-            highlighted_product.forEach((val) => console.log("value", val));
+            // highlighted_product.forEach((val) => console.log("value", val));
+            setLoading(false);
             // synchronize(rspnse)
             // setBlog_data(response.data)
             // console.log(product_data);
         }).catch(error => {
             console.log(error);
+            setLoading(false);
         })
     }
     const get_blogs = () => {
-
+        setLoading(true);
         Axios.get(`${API}/shop/get_blogs`).then(response => {
             setBlog_data(response.data);
+            setLoading(false);
             // setBlog_data(response.data)
         }).catch(error => {
             console.log(error);
+            setLoading(false);
         })
     }
 
     const get_products = () => {
-
+        setLoading(true);
         Axios.get(`${API}/shop/get_products`).then(response => {
             setProduct_data(response.data)
+            setLoading(false);
         }).catch(error => {
             console.log(error);
+            setLoading(false);
         })
     }
     const re_fresh = () => {
+        setLoading(true);
         setRefresh(!refresh);
+        setLoading(false);
     }
 
     const get_highlights = () => {
+        setLoading(true);
         Axios.get(`${API}/shop/get_highlights`).then(response => {
             // console.log("highlight_data pehla",highlight_data,response.data);
             setHighlights_data(response.data)
+            setLoading(false);
         }).catch(error => {
             console.log("highlights error ", error);
+            setLoading(false);
         })
     }
 
@@ -134,21 +166,25 @@ const Home = () => {
     // }, [])
 
     const fetchSliderData = () => {
+        setLoading(true);
         Axios.get(`${API}/shop/get_highlights`).then(response => {
             setSliderData(response.data)
             console.log("response",response.data)
         }).catch(error => {
             console.log(error);
+            setLoading(false);
         })
     }
 
-    const addToCart = () => {
 
-    }
-
-
-if (product_data && highlight_data && blog_data && sliderData) {
+if(loading){
+    document.getElementById('loader').classList.remove("hidden")
+    return;
+}
+else{
+    document.getElementById('loader').classList.add("hidden")
     return (
+       
         <section>
         <ToastContainer position="bottom-right"/>
         <Navbar />
@@ -360,10 +396,9 @@ if (product_data && highlight_data && blog_data && sliderData) {
         
 
     )
-                }
-                else {
-<></>
-                }
+}
+   
+
     
 }
 

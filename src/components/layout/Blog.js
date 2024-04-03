@@ -13,6 +13,7 @@ const Blog = () => {
 
     const [blog, setBlog] = useState([]);
     const [refresh, setRefresh]  = useState(false);
+    const [loading, setLoading] = useState(false);
     const {slug} = useParams();
 
     useEffect(() => {
@@ -25,12 +26,20 @@ const Blog = () => {
 
     const getCategories = async() => {
         console.log(slug)
+        setLoading(true);
         await Axios.get(`${API}/shop/get_blogs`).then(res=>{
             console.log(res.data);
             setBlog(res.data);
-    }).catch( err => console.log(err))
+            setLoading(false);
+    }).catch( err => {console.log(err); setLoading(false)})
     }
     
+    if(loading){
+        document.getElementById('loader').classList.remove("hidden")
+        return;
+    }
+    else{
+        document.getElementById('loader').classList.add("hidden")
 
     return(
         <>
@@ -67,6 +76,7 @@ const Blog = () => {
         </>
        
     )
+        }
 }
 
 

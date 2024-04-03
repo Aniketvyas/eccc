@@ -14,30 +14,15 @@ export default function Checkout() {
   const [tax, setTax] = useState(JSON.parse(localStorage.getItem('cart')).tax);
   const [total, SetTotal] = useState(discount+tax+shippingCost);
   const [voucher, setVoucher] = useState(JSON.parse(localStorage.getItem('cart')).voucher);
+  const [loading, setLoading] =useState(false);
 
-  // useEffect(() => {
-  //   getData();
-
-  // }, [])
-
-
-  // const getData = () => {
-  //   var cart = JSON.parse(localStorage.getItem('cart'));
-  //   var products = cart.product;
-  //   console.log(cart);
-  //   setData(cart.product);
-  //   setDiscount(parseInt(cart.discounted_price));
-  //   setOverall(parseInt(cart.original_price));
-  //   setTax(parseInt(cart.tax));
-  //   setShippingCost(parseInt(cart.shipping_cost));
-  //   console.log(shippingCost, discount,tax);
-  //   SetTotal(discount+tax+shippingCost)
-  // }
 
   const handleCheckout = (event) => {
+    setLoading(true);
     const formData = new FormData(event.currentTarget);
 		event.preventDefault();
-		var obj = {}
+		
+    var obj = {}
 		for (let [key, value] of formData.entries()) {
 			obj[key] = value;
 		}
@@ -52,14 +37,25 @@ export default function Checkout() {
       'voucher':voucher
 
     }
+    
     Axios.post(`${API}/shop/place_order`,dataa).then((response)=>{
       console.log(response)
+      setLoading(false);
       
     }).catch(error=>{
           console.log(error);
+          setLoading(false)
       })
 
   }
+  
+  if(loading){
+    document.getElementsById("loader").classList.remove("hidden");
+  }
+  else{
+
+  document.getElementById("loader").getElementById("loader").classList.add("hidden");
+
   return (
     <>
       <Navbar />
@@ -292,4 +288,5 @@ export default function Checkout() {
 
     </>
   )
+}
 }
