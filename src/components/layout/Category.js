@@ -24,10 +24,10 @@ const Category = () => {
 
     }, [refresh])
 
-    const getCategories = async() => {
+    const getCategories = () => {
         console.log(slug)
         setLoading(true);
-        await Axios.get(`${API}/shop/get_category/${slug}`).then(res=>{
+         Axios.get(`${API}/shop/get_category/${slug}`).then(res=>{
             console.log(res.data);
             setCategory(res.data);
             setLoading(false);

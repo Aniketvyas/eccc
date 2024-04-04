@@ -52,12 +52,12 @@ const Navbar = () => {
 		<section class="header-main">
 			<nav class="navbar navbar-expand-lg navbar-light px-2 py-3">
 				<div class="col-lg-2 col-md-4 col-sm-2 text-center">
-					<a href="/" class="navbar-brand">
+					<Link to="/" class="navbar-brand">
 						<div class="">
 							<img class="logo" width='40' height="40" src={`${API}/static/images/logo.png`} />
 						</div>
 						<p style={{fontSize: 15+"px !important;"}}><b>Natural Marbles</b></p>
-					</a>
+					</Link>
 				</div>
 		
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -102,7 +102,7 @@ const Navbar = () => {
 										<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
 											{
 												categories.map((item,key) => (
-													<a href={`/category/${item.slug}`} className='dropdown-item'>{item.name}</a>
+													<Link to={`/category/${item.slug}`} className='dropdown-item'>{item.name}</Link>
 												))
 											}
 											
