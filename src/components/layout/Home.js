@@ -94,8 +94,7 @@ const Home = () => {
             setProduct_data(response.data.products)
             setBlog_data(response.data.blogs)
             setHighlights_data(response.data.highlights)
-            setHighlights_data(response.data.highlights)
-            setSliderData(response.data.highlights)
+            setSliderData(response.data.slider)
             setHighlighted_product(response.data.highlights)
             setLoading(false);
         }).catch(err => {
